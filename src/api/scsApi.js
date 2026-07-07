@@ -1,41 +1,48 @@
 import axios from 'axios';
 
 axios.defaults.timeout = 60000;
-axios.defaults.withCredentials = true;
 
 const apiOrigin = (import.meta.env.VITE_API_ORIGIN || 'https://ps-store-backend-uucr.onrender.com').replace(/\/$/, '');
+const useCredentials = import.meta.env.VITE_API_WITH_CREDENTIALS === 'true';
 
 const request = axios.create({
-	baseURL: apiOrigin
+	baseURL: apiOrigin,
+	withCredentials: useCredentials
 });
 
 const loginRequest = axios.create({
 	baseURL: apiOrigin,
+	withCredentials: useCredentials,
 	headers: { 'Content-Type': 'application/json' }
 });
 
 const downloadBlob = axios.create({
 	baseURL: apiOrigin,
+	withCredentials: useCredentials,
 	responseType: 'blob'
 });
 
 const uploadBlob = axios.create({
 	baseURL: apiOrigin,
+	withCredentials: useCredentials,
 	responseType: 'blob'
 });
 
 const requestBlob = axios.create({
 	baseURL: apiOrigin,
+	withCredentials: useCredentials,
 	responseType: 'blob'
 });
 
 const upload = axios.create({
 	baseURL: apiOrigin,
+	withCredentials: useCredentials,
 	headers: { 'Content-Type': 'multipart/form-data' }
 });
 
 const requestMult = axios.create({
 	baseURL: apiOrigin,
+	withCredentials: useCredentials,
 	headers: { 'Content-Type': 'multipart/form-data' }
 });
 

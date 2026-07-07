@@ -3,31 +3,31 @@
 		<header class="games-mgnt__hero">
 			<div>
 				<p class="games-mgnt__eyebrow">Michael Store</p>
-				<h1 class="games-mgnt__title">遊戲管理</h1>
+				<h1 class="games-mgnt__title">商品管理</h1>
 				<p class="games-mgnt__subtitle">
-					已接上後端遊戲清單 API，這裡可以快速查看遊戲狀態、平台分布與精選標記。
+					目前已接上商品清單 API，畫面會直接呈現中文名稱、英文名稱、價格、庫存、類型與封面。
 				</p>
 			</div>
 			<div class="games-mgnt__hero-actions">
 				<BtnCompo
 					set-type="delete"
-					name="批次下架"
+					name="批次刪除"
 					@click="bulkSetOffline" />
 			</div>
 		</header>
 
 		<section class="games-mgnt__stats">
 			<v-sheet class="games-mgnt__stat-card" rounded="xl" border>
-				<span class="games-mgnt__stat-label">遊戲總數</span>
+				<span class="games-mgnt__stat-label">商品總數</span>
 				<strong class="games-mgnt__stat-value">{{ statusSummary.total }}</strong>
 			</v-sheet>
 			<v-sheet class="games-mgnt__stat-card" rounded="xl" border>
-				<span class="games-mgnt__stat-label">上架中</span>
-				<strong class="games-mgnt__stat-value">{{ statusSummary.online }}</strong>
+				<span class="games-mgnt__stat-label">總庫存</span>
+				<strong class="games-mgnt__stat-value">{{ statusSummary.stock }}</strong>
 			</v-sheet>
 			<v-sheet class="games-mgnt__stat-card" rounded="xl" border>
-				<span class="games-mgnt__stat-label">精選遊戲</span>
-				<strong class="games-mgnt__stat-value">{{ statusSummary.featured }}</strong>
+				<span class="games-mgnt__stat-label">低庫存品項</span>
+				<strong class="games-mgnt__stat-value">{{ statusSummary.lowStock }}</strong>
 			</v-sheet>
 		</section>
 
@@ -35,30 +35,25 @@
 			<div class="games-mgnt__filters">
 				<InputCompo
 					v-model="keyword"
-					label="搜尋遊戲"
-					placeholder="搜尋名稱、類型或代碼"
+					label="搜尋商品"
+					placeholder="搜尋名稱、類型或 UUID"
 					prepend-inner-icon="mdi-magnify"
 					hide-details />
 				<InputCompo
-					v-model="filters.status"
+					v-model="filters.type"
 					mode="select"
-					label="狀態"
-					:items="gameStatusOptions"
+					label="類型"
+					:items="typeOptions"
 					item-title="title"
 					item-value="value"
 					hide-details />
 				<InputCompo
-					v-model="filters.platform"
+					v-model="filters.stock"
 					mode="select"
-					label="平台"
-					:items="platformOptions"
+					label="庫存狀態"
+					:items="stockOptions"
 					item-title="title"
 					item-value="value"
-					hide-details />
-				<InputCompo
-					v-model="filters.featuredOnly"
-					mode="checkbox"
-					label="只看精選"
 					hide-details />
 				<BtnCompo
 					set-type="close"
@@ -79,42 +74,36 @@
 					:is-show-select="true"
 					:fixed-header="false"
 					item-key="uuid"
-					no-data-text="目前沒有符合條件的遊戲資料"
+					no-data-text="目前沒有符合條件的商品資料"
 					@datatableOptions="onTableOptionsChange">
-					<template #status="{ item }">
+					<template #cover="{ item }">
+						<div class="games-mgnt__cover">
+							<img v-if="item.url" :src="item.url" :alt="item.chiName" />
+							<div v-else class="games-mgnt__cover-placeholder">
+								<v-icon icon="mdi-image-off-outline" />
+							</div>
+						</div>
+					</template>
+
+					<template #price="{ item }">
+						NT$ {{ item.price.toLocaleString() }}
+					</template>
+
+					<template #quantity="{ item }">
+						{{ item.quantity }}
+					</template>
+
+					<template #stockStatus="{ item }">
 						<v-chip
-							:color="getStatusMeta(item.status).color"
+							:color="getStockMeta(item.quantity).color"
 							size="small"
 							variant="tonal">
-							{{ getStatusMeta(item.status).label }}
+							{{ getStockMeta(item.quantity).label }}
 						</v-chip>
-					</template>
-
-					<template #players="{ item }">
-						{{ item.players.toLocaleString() }}
-					</template>
-
-					<template #rating="{ item }">
-						<div class="games-mgnt__rating d-flex align-center ga-1">
-							<v-icon icon="mdi-star-four-points" size="18" />
-							<span>{{ item.rating }}</span>
-						</div>
 					</template>
 
 					<template #btns="{ item }">
 						<div class="d-flex align-center justify-center ga-2 flex-wrap">
-							<BtnCompo
-								:name="item.featured ? '取消精選' : '加入精選'"
-								size="x-small"
-								variant="outlined"
-								@click="toggleFeatured(item)" />
-							<BtnCompo
-								name="切換狀態"
-								size="x-small"
-								set-icon="mdi-sync"
-								color="secondary"
-								variant="text"
-								@click="cycleStatus(item)" />
 							<BtnCompo
 								name="刪除"
 								size="x-small"
@@ -243,7 +232,7 @@
 
 	&__filters {
 		display: grid;
-		grid-template-columns: minmax(0, 2fr) repeat(2, minmax(180px, 1fr)) auto auto;
+		grid-template-columns: minmax(0, 2fr) repeat(2, minmax(180px, 1fr)) auto;
 		gap: 16px;
 		padding: 24px 24px 12px;
 		align-items: center;
@@ -253,13 +242,30 @@
 		padding: 0 16px 16px;
 	}
 
-	&__rating {
-		color: #ffd6fa;
+	&__cover {
+		width: 52px;
+		height: 68px;
+		border-radius: 12px;
+		overflow: hidden;
+		border: 1px solid rgba(89, 232, 255, 0.16);
+		background: rgba(15, 22, 45, 0.9);
+		box-shadow: 0 0 18px rgba(89, 232, 255, 0.08);
 
-		.v-icon {
-			color: #59e8ff;
-			filter: drop-shadow(0 0 8px rgba(89, 232, 255, 0.35));
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
 		}
+	}
+
+	&__cover-placeholder {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: rgba(89, 232, 255, 0.7);
 	}
 
 	:deep(.v-card) {
