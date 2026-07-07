@@ -26,7 +26,7 @@
 						alt="EIP" /> -->
 					<div class="eip-sidebar__brand-text">
 						<h1 class="eip-sidebar__title">個人資料保護委員會籌備處</h1>
-						<span class="eip-sidebar__badge">員工入口網</span>
+						<span class="eip-sidebar__badge">Michael's 電玩店</span>
 					</div>
 				</div>
 				<nav :class="['eip-sidebar__nav', { 'scroll-y-auto': showLogout} ]">

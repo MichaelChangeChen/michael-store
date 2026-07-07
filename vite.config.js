@@ -5,29 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), '')
-	const apiOrigin = env.VITE_API_ORIGIN || 'https://ps-store-backend-uucr.onrender.com'
-	const apiPath = env.VITE_API_PATH || ''
-	const publicPath = env.VITE_PUBLIC_PATH || ''
-	const uploadPath = env.VITE_UPLOAD_PATH || ''
-	const proxy = {}
-
-	if(apiPath)
-		proxy[apiPath] = {
-			target: apiOrigin,
-			changeOrigin: true,
-		}
-
-	if(publicPath)
-		proxy[publicPath] = {
-			target: apiOrigin,
-			changeOrigin: true,
-		}
-
-	if(uploadPath)
-		proxy[uploadPath] = {
-			target: apiOrigin,
-			changeOrigin: true,
-		}
+	const appBase = env.VITE_APP_BASE || '/'
 
 	return {
 		plugins: [
@@ -51,7 +29,6 @@ export default defineConfig(({ mode }) => {
 		},
 		server: {
 			port: 8081,
-			proxy,
 			open: true
 		},
 		build: {
@@ -59,6 +36,6 @@ export default defineConfig(({ mode }) => {
 			outDir: 'dist',
 			assetsDir: '',
 		},
-		base: '/'
+		base: appBase
 	}
 })
