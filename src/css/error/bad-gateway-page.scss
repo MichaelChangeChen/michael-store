@@ -1,0 +1,41 @@
+	.bad-gateway-page {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.error-page {
+			max-width: 520px;
+			width: 100%;
+			background: linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 255, 0.92));
+		}
+
+		.code {
+			font-size: 72px;
+			font-weight: 800;
+			line-height: 1;
+			text-align: center;
+			letter-spacing: 0.04em;
+			margin-bottom: 12px;
+		}
+
+		.icon-wrap {
+			display: flex;
+			justify-content: center;
+		}
+
+		.icon-bg {
+			background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.9), rgba(255, 235, 238, 0.9));
+			border: 2px solid rgba(229, 57, 53, 0.25);
+		}
+
+		.title {
+			font-size: 2rem;
+			font-weight: 700;
+		}
+
+		.desc {
+			color: #455a64;
+			font-size: 0.95rem;
+		}
+	}

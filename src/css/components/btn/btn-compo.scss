@@ -1,0 +1,22 @@
+@import '@/assets/scss/eip-variables';
+
+.v-btn {
+	text-transform: none;
+	letter-spacing: 0.04em;
+	font-weight: 700;
+	border-radius: 14px;
+	backdrop-filter: blur(10px);
+	transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+
+	&:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 0 18px rgba(255, 79, 191, 0.12);
+	}
+}
+
+.v-btn--variant-tonal,
+.v-btn--variant-outlined,
+.v-btn--variant-elevated,
+.v-btn--variant-flat {
+	border: 1px solid rgba(89, 232, 255, 0.16);
+}

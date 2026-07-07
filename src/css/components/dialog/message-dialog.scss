@@ -1,0 +1,19 @@
+﻿.message-dialog {
+	.message-dialog__subtitle {
+		margin-top: 4px;
+		font-size: 0.85rem;
+		color: rgb(255, 85, 85);
+	}
+
+	.message-dialog__content {
+		line-height: 1.6;
+	}
+
+	.message-dialog__item {
+		color: rgb(var(--v-theme-primary));
+		font-size: 1rem;
+		font-weight: 600;
+		white-space: pre-wrap;
+		word-break: break-word;
+	}
+}

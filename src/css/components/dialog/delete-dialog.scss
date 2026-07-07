@@ -1,0 +1,18 @@
+﻿.delete-dialog {
+	.delete-dialog__hint {
+		color: rgb(255, 85, 85);
+		font-size: 0.95rem;
+	}
+
+	.delete-dialog__list {
+		margin: 0;
+		padding-left: 1.2rem;
+		color: rgb(var(--v-theme-primary));
+		font-weight: 600;
+		line-height: 1.6;
+	}
+
+	.v-card-title {
+		padding: 18px 20px 14px;
+	}
+}

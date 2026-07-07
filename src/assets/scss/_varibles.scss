@@ -1,0 +1,94 @@
+//mediaquery
+$screen-lg: 1400px; //電腦
+$screen-md: 992px; //平板
+$screen-sm: 768px; //手機
+$screen-xs: 576px; //極小尺寸
+
+// << color >> ==============
+
+// --BUTTON-- color
+$download-color: #00C853;
+$edit-color: #01579B;
+$add-color: lighten($edit-color, 15%);
+$delete-color: #EF5350;
+$search-color: #00ACC1;
+$send-color: lighten($edit-color, 33%);
+$close-color: #818181;
+$cancel-color: #F06292;
+$notice-color: #FF7043;
+$back-color: #2b2b2b;
+$money-color: #ecd200;
+
+//  --STATUS-- color
+$normal-color: #01579B;
+$remind-color: #FF7043;
+$warring-color: #EF5350;
+$ok-color: #00C853;
+
+// << STATUS >>  =============
+
+// 結案
+$finished: #00C853;
+// 已補件
+$replenished-and-send: #01579B;
+// 退件
+$return: #EF5350;
+// 同意
+$agreed: #00ACC1;
+// 待處理
+$to-be-solved: lighten($replenished-and-send, 33%);
+// 待補件
+$replenish: #F06292;
+// 退回初審
+$back-to-initial: #FF7043;
+// 待繳款
+$non-paid: #FF7043;
+// 已上傳繳款收據
+$upoloaded: #01579B;
+// 審核者已確認繳款
+$payment-be-checked: #00C853;
+// 不需繳款
+$not-required: #818181;
+// 已合併
+$be-combine: lighten($upoloaded, 15%);
+
+* {
+	font-family: arial, "Microsoft JhengHei", "微軟正黑體", sans-serif;
+	p, a {
+		font-size: 0.875rem;
+	}
+	h1 {
+		font-size: 1.75rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+	h3 {
+		font-size: 1.25rem;
+	}
+	h4 {
+		font-size: 1rem;
+	}
+	/*  << SCROLLBAR >>  ============== */
+	// ::-webkit-scrollbar {
+	// 	width: 15px;
+	// 	height: 10px;
+	// }
+	// ::-webkit-scrollbar-track {
+	// 	background: rgba(159, 196, 250, 0.3);
+	// }
+	// /* Handle */
+	// ::-webkit-scrollbar-thumb {
+	// 	background: #197ed1;
+	// 	border-radius: 10px;
+	// }
+	// /* Handle on hover */
+	// ::-webkit-scrollbar-thumb:hover {
+	// 	background: #08b2eb;
+	// }
+	// ::-webkit-scrollbar-corner {
+	// 	background: rgba(0, 0, 0, 0);
+	// }
+}
+
+@import '@/assets/scss/hyboot-variables.scss';

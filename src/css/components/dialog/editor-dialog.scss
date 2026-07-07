@@ -1,0 +1,33 @@
+.editor-dialog {
+	.editor-dialog__card {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	.editor-dialog__subtitle {
+		margin-top: 4px;
+		font-size: 0.85rem;
+		color: rgb(255, 85, 85);
+	}
+
+	.editor-dialog__body {
+		flex: 1 1 auto;
+		min-height: 0;
+		padding: 0;
+		overflow: auto;
+	}
+
+	.editor-dialog__scroll {
+		padding: 16px 20px;
+	}
+
+	.v-card-title,
+	.v-card-actions {
+		flex: 0 0 auto;
+	}
+
+	.v-card-actions {
+		margin-top: auto;
+	}
+}

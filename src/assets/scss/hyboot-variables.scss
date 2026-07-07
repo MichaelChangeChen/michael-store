@@ -1,0 +1,363 @@
+.user-select-none {
+	user-select: none;
+}
+:deep(.box-shadow-none *) {
+	> div {
+		box-shadow: none !important;
+		background: none !important;
+		background-color: none !important;
+	}
+}
+:deep(.content-card) {
+	background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+}
+
+// FORM_PAGE
+.section-title {
+	margin-bottom: 12px;
+	padding: 8px 12px;
+	border-left: 4px solid #1976d2;
+	background-color: #eff6ff;
+	font-size: 0.95rem;
+	font-weight: 700;
+}
+.section-title.red {
+	border-left: 4px solid #fd5050;
+}
+.form-top-sticky,
+.form-bottom-sticky {
+	position: sticky;
+	z-index: 5;
+	opacity: 0.9;
+	box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.06);
+}
+.form-top-sticky {
+	top: 0;
+	margin: -16px -10px 0px;
+}
+.form-bottom-sticky {
+	bottom: 0;
+	margin: 0 -10px -16px;
+}
+
+//  網頁上列印時
+@media print {
+	.v-navigation-drawer,
+	.v-toolbar {
+		display: none !important;
+	}
+	.v-main {
+		padding: 0 !important;
+	}
+}
+
+
+// vuetify3 style
+// .v-input.v-text-field {
+// 	.v-input__control {
+// 		margin-bottom: 2px !important;
+// 		.v-field {
+// 			.v-field__field {
+// 				.v-label {
+// 					// font-size: 1rem; //已經是 1rem
+// 				}
+// 				input {
+// 					padding: 5px 15px;
+// 				}
+// 				.v-field__input {
+// 					min-height: 30px;
+// 				}
+// 			}
+// 		}
+// 	}
+// 	.v-input__append {
+// 		// i {}
+// 	}
+// 	.v-input__details {
+// 		padding-top: 0;
+// 		.v-messages {
+
+// 		}
+// 	}
+// }
+
+
+
+
+
+
+
+
+
+
+// << OVERLAY >> =======================
+// when dialog open background will blur
+// .v-overlay--active {
+//     backdrop-filter: blur(2px);
+//     background: rgba(0, 0, 0, .2);
+// }
+
+// << INPUT >>  ==================
+
+// controll all messages color
+// .v-input {
+// 	::-webkit-scrollbar {
+// 		width: 6px !important;
+// 		// margin-right: 3px;
+// 	}
+// 	.v-messages__message {
+// 		line-height: 20px;
+// 		color: #283593;
+// 		margin-bottom: 8px;
+// 		margin-top: -2px;
+// 	}
+// }
+// // required error color
+// .required-color {
+// 	.v-messages__message {
+// 		color: #ef476f !important;
+// 	}
+// }
+
+// all input kind
+// .v-input {
+// 	.v-input__control {
+// 		margin-bottom: 14px !important;
+// 		.v-input__slot {
+// 			padding: 0 6px !important;
+// 			margin-bottom: 0px !important;
+// 			min-height: 35px !important;
+// 			// radio (two or three radios for a row)
+// 			.v-input--radio-group__input {
+// 				.v-label {
+// 					font-size: 1rem;
+// 				}
+// 				.radio-type {
+// 					@for $i from 1 through 10 {
+// 						&-#{$i} {
+// 							display: flex;
+// 							gap: 10px;
+// 							flex-flow: row wrap;
+// 							.v-radio {
+// 								flex-basis: calc((100% / #{$i}) - 10px);
+// 								margin-bottom: 0px;
+// 								.v-input--selection-controls__input {
+// 									.v-icon {
+// 										color: #1976D2 !important;
+// 									}
+// 								}
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 			.v-text-field__slot,
+// 			.v-select__slot {
+// 				// change label style
+// 				input {
+// 					padding: 0;
+// 				}
+// 				label {
+// 					font-size: 16px !important;
+// 					text-align: center;
+// 					padding-right: 0;
+// 					transform: translateY(-24px) scale(1);
+// 					background-color: white;
+// 				}
+// 				.v-label--active {
+// 					transform: translateY(-22px) translateX(6px) scale(0.9) !important;
+// 				}
+// 				// upload file color
+// 				.v-file-input__text--chips {
+// 					.v-chip {
+// 						background-color: #283593;
+// 						color: white;
+// 					}
+// 				}
+// 			}
+// 		}
+// 		.v-text-field__details {
+// 			margin-bottom: 0px !important;
+// 			padding: 0;
+// 			.v-messages {
+// 				.v-messages__wrapper {
+// 					.v-messages__message {
+// 						margin-top: 1px;
+// 						margin-bottom: 0 !important;
+// 						font-size: 0.875rem;
+// 						line-height: 20px;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+// upload file
+// .v-file-input {
+// 	.v-input__control {
+// 		.v-input__slot {
+// 			.v-text-field__slot {
+// 				.v-file-input__text--chips {
+// 					.v-chip {
+// 						background-color: #283593;
+// 						color: white;
+// 						max-width: 90%;
+// 						position: absolute;
+// 						.v-chip__content {
+// 							overflow: hidden !important;
+// 							text-overflow: ellipsis !important;
+// 						}
+// 					}
+// 				}
+// 			}
+// 			.v-input__append-inner {
+// 				position: absolute;
+// 				right: 0;
+// 				background-color: #fff;
+// 				margin-right: 5px;
+// 				padding: 0;
+// 			}
+// 		}
+// 	}
+// }
+
+// search group
+// .search-group {
+// 	display: flex;
+// 	flex-wrap: wrap;
+// 	gap: 20px;
+// 	padding: 10px;
+// 	&::before {
+// 		content: '搜尋：';
+// 		display: inline-block;
+// 		margin-top: 4px;
+// 		font-size: 1.125rem;
+// 		color: #999999;
+// 		font-weight: bold;
+// 	}
+// 	.v-input {
+// 		max-width: 200px;
+// 		.v-input__control {
+// 			margin-bottom: 0 !important;
+// 			.v-text-field__details {
+// 				display: none;
+// 			}
+// 		}
+// 	}
+// }
+
+// select group in row
+// .select-group-row,
+// .checkbox-group-row {
+// 	display: flex;
+// 	gap: 10px;
+// }
+// .select-group-row {
+// 	.v-input {
+// 		max-width: 50%;
+// 	}
+// }
+
+// .no-show {
+// 	display: none;
+// }
+
+// .button-group-row,
+// .button-group-center,
+// .checkbox-group-center {
+// 	display: flex;
+// 	gap: 12px;
+// }
+// .button-group-center,
+// .checkbox-group-center {
+// 	justify-content: center;
+// }
+
+// .checkbox-group-row,
+// .button-group-row {
+// 	flex-wrap: wrap;
+// }
+// label in group
+// .group-label {
+// 	width: 100%;
+// 	color: black;
+// 	font-weight: bold;
+// 	.v-input--checkbox {
+// 		padding: 0 !important;
+// 		margin-top: 0 !important;
+// 		.v-input__slot {
+// 			padding: 0 !important;
+// 			label {
+// 				font-size: 1rem;
+// 			}
+// 		}
+// 	}
+// 	& > label {
+// 		margin-bottom: 20px;
+// 		font-size: 1rem;
+// 	}
+// 	.checkbox-type {
+// 		@for $i from 1 through 10 {
+// 			&-#{$i} {
+// 				display: flex;
+// 				gap: 10px;
+// 				flex-flow: row wrap;
+// 				.v-input--checkbox {
+// 					flex-basis: calc((100% / #{$i}) - 10px);
+// 					.v-input--selection-controls__input {
+// 						.v-icon {
+// 							color: #1976D2 !important;
+// 						}
+// 					}
+// 				}
+// 				.v-input--checkbox.v-input--is-disabled {
+// 					.v-input--selection-controls__input {
+// 						.v-icon {
+// 							color: #9aa7b4 !important;
+// 						}
+// 					}
+// 					label {
+// 						color: #9aa7b4 !important;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+// << OTHER DIY STYLE >> ===================
+// .v-application {
+// 	// for discript ul (named on div)
+// 	.description {
+// 		line-height: 20px;
+// 		color: red;
+// 		p,
+// 		span {
+// 			margin-bottom: 0;
+// 		}
+// 		span {
+// 			margin-left: 5px;
+// 		}
+// 		ul {
+// 			display: block;
+// 			padding-left: 0;
+// 			list-style-type: "※ ";
+// 		}
+// 	}
+// }
+
+// @keyframes shake {
+// 	0% {
+// 		transform: rotate(0deg);
+// 		color: $edit-color;
+// 	}
+// 	50% {
+// 		transform: rotate(12deg);
+// 		color: rgb(88, 88, 88);
+// 	}
+// 	100% {
+// 		transform: rotate(0deg);
+// 		color: $send-color;
+// 	}
+// }

@@ -1,0 +1,307 @@
+@import '@/assets/scss/eip-variables';
+
+.radius {
+	border-radius: 0 26px 26px 0 !important;
+}
+.eip-sidebar-rail {
+	.v-navigation-drawer {
+		transition: .2s ease-in-out;
+		overflow: hidden;
+		background: transparent !important;
+		border: 0 !important;
+		box-shadow: none !important;
+
+		.eip-sidebar {
+			width: 100%;
+			height: 100%;
+			flex-shrink: 0;
+			position: relative;
+			background:
+				radial-gradient(circle at top left, rgba(89, 232, 255, 0.22), transparent 24%),
+				radial-gradient(circle at bottom right, rgba(255, 79, 191, 0.17), transparent 20%),
+				linear-gradient(180deg, rgba(22, 30, 60, 0.96) 0%, rgba(16, 22, 42, 0.94) 100%);
+			color: $eip-text;
+			display: flex;
+			flex-direction: column;
+			box-shadow:
+				0 0 0 1px rgba(89, 232, 255, 0.12) inset,
+				0 18px 60px rgba(0, 0, 0, 0.45),
+				0 0 42px rgba(120, 104, 255, 0.12);
+			z-index: 2;
+			overflow: hidden;
+			border-radius: 0 28px 28px 0;
+
+			&::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				pointer-events: none;
+				background:
+					linear-gradient(rgba(255, 79, 191, 0.08) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(89, 232, 255, 0.06) 1px, transparent 1px);
+				background-size: 32px 32px;
+				opacity: 0.18;
+			}
+
+			&__brand {
+				transition: .25s ease-in-out;
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				padding: 32px 10px 20px;
+
+				&-text {
+					transition: .3s ease-in-out;
+					width: 0;
+					text-overflow: ellipsis;
+					overflow: hidden;
+					white-space: nowrap;
+				}
+			}
+
+			&__logo {
+				width: 36px;
+				height: 36px;
+				border-radius: 10px;
+				background: rgba(255, 255, 255, 0.18);
+				padding: 6px;
+				object-fit: contain;
+			}
+
+			&__brand-text {
+				white-space: nowrap;
+			}
+
+			&__title {
+				font-size: 1.05rem;
+				font-weight: 800;
+				letter-spacing: 0.08em;
+				line-height: 1.35;
+				text-transform: uppercase;
+				text-shadow: 0 0 16px rgba(89, 232, 255, 0.18);
+			}
+
+			&__badge {
+				display: inline-block;
+				margin-top: 6px;
+				padding: 4px 10px;
+				background: rgba(255, 79, 191, 0.1);
+				border: 1px solid rgba(255, 79, 191, 0.22);
+				color: $eip-hot-pink;
+				border-radius: 999px;
+				font-size: 11px;
+				font-weight: 600;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				box-shadow: inset 0 0 18px rgba(255, 79, 191, 0.08);
+			}
+
+			&__label {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				max-width: 0;
+				opacity: 0;
+				transition: max-width .25s ease, opacity .2s ease;
+			}
+
+			&__nav {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+				transition: .3s ease-in-out;
+				overflow-y: visible;
+			}
+
+			.scroll-y-auto {
+				overflow-y: auto;
+				overflow-x: hidden;
+				padding-right: 4px;
+				margin-right: 2px;
+				scrollbar-width: thin;
+				scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.14);
+				scroll-behavior: smooth;
+			}
+
+			&__nav-item {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				padding: 12px 16px;
+				border: 1px solid transparent;
+				border-radius: 16px;
+				color: rgba(238, 247, 255, 0.9);
+				text-decoration: none;
+				transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+				width: 100%;
+				position: relative;
+				border: 0;
+				background: rgba(255, 255, 255, 0.045);
+				text-align: left;
+				font: inherit;
+				outline: none;
+				appearance: none;
+
+				&:hover,
+				&:focus-visible {
+					border-color: rgba(89, 232, 255, 0.26);
+					background: linear-gradient(90deg, rgba(89, 232, 255, 0.14), rgba(255, 79, 191, 0.12));
+					color: #fff;
+					box-shadow: 0 0 20px rgba(89, 232, 255, 0.1);
+					transform: translateX(2px);
+				}
+
+				&.router-link-active,
+				&.router-link-exact-active {
+					border-color: rgba(89, 232, 255, 0.4);
+					background: linear-gradient(90deg, rgba(89, 232, 255, 0.22), rgba(255, 79, 191, 0.18));
+					color: #fff;
+					font-weight: 700;
+					box-shadow:
+						inset 3px 0 0 rgba(89, 232, 255, 0.95),
+						0 0 28px rgba(120, 104, 255, 0.12);
+				}
+
+				&--group {
+					cursor: pointer;
+					background: rgba(255, 255, 255, 0.05);
+
+					.eip-sidebar__group-chevron {
+						margin-left: auto;
+						transition: transform .2s ease;
+					}
+
+					&.is-active {
+						border-color: rgba(255, 79, 191, 0.24);
+						background: linear-gradient(90deg, rgba(255, 79, 191, 0.14), rgba(89, 232, 255, 0.08));
+					}
+
+					&.is-open .eip-sidebar__group-chevron {
+						transform: rotate(180deg);
+					}
+				}
+
+				&--child {
+					margin-left: 12px;
+					width: calc(100% - 12px);
+					padding-left: 28px;
+					background: rgba(255, 255, 255, 0.07);
+				}
+
+				.v-icon {
+					flex-shrink: 0;
+					color: $eip-cyan;
+					filter: drop-shadow(0 0 8px rgba(89, 232, 255, 0.22));
+				}
+
+				&--disabled {
+					opacity: 0.45;
+					cursor: not-allowed;
+					filter: grayscale(0.2);
+					pointer-events: none;
+				}
+			}
+
+			&__group {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+
+			&__subnav {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+				padding-left: 10px;
+			}
+
+			&__footer {
+				transition: .5s ease-in-out;
+				padding: 16px 10px 24px;
+
+				.v-icon {
+					transition: .5s ease-in-out;
+				}
+			}
+
+			&__cta {
+				width: 100%;
+				border: 1px solid rgba(255, 79, 191, 0.22);
+				border-radius: 16px;
+				padding: 10px 12px;
+				background: linear-gradient(90deg, rgba(255, 79, 191, 0.22), rgba(89, 232, 255, 0.18)) !important;
+				color: #fff !important;
+				font-weight: 700;
+				cursor: pointer;
+				transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+				text-transform: none;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: 8px;
+				box-shadow: 0 0 24px rgba(255, 79, 191, 0.1);
+
+				&:hover {
+					transform: translateY(-1px);
+					box-shadow: 0 0 30px rgba(255, 79, 191, 0.18);
+				}
+			}
+
+		}
+
+		&--is-hovering,
+		&.is-focused {
+			.eip-sidebar {
+				&__brand {
+					padding: 32px 16px 16px;
+
+					&-text {
+						width: 100%;
+						overflow: unset;
+					}
+				}
+
+				&__nav {
+					flex: 1;
+					padding: 8px 16px 0;
+				}
+
+				&__label {
+					max-width: 100%;
+					opacity: 1;
+				}
+
+				&__footer {
+					padding: 16px 24px 24px;
+				}
+			}
+		}
+
+		&.is-mobile {
+			.eip-sidebar {
+				&__brand {
+					padding: 0 16px 16px;
+
+					&-text {
+						width: 100%;
+						overflow: unset;
+					}
+				}
+
+				&__nav {
+					flex: 1;
+					padding: 8px 16px 0;
+				}
+
+				&__label {
+					max-width: 100%;
+					opacity: 1;
+				}
+
+				&__footer {
+					padding: 16px 24px 24px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+	.not-found-page {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		.error-page {
+			max-width: 500px;
+			.text {
+				font-size: 0.6rem !important;
+			}
+		}
+	}
